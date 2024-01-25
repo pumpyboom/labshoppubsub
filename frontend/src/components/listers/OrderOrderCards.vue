@@ -111,8 +111,6 @@
             me.newValue = {
                 'productId': '',
                 'qty': 0,
-                'customerId': '',
-                'amount': 0,
             }
         },
         methods:{

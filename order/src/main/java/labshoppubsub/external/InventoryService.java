@@ -17,10 +17,4 @@ public interface InventoryService {
 
     @GetMapping(path = "/inventories/{id}")
     public Inventory getInventory(@PathVariable("id") Long id);
-
-    @GetMapping(path = "/inventories")
-    public List<Inventory> getInventory();
-
-    @GetMapping(path = "/inventories/{id}")
-    public Inventory getInventory(@PathVariable("id") Long id);
 }

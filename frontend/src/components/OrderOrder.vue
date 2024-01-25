@@ -18,8 +18,6 @@
         <v-card-text>
             <String label="ProductId" v-model="value.productId" :editMode="editMode" :inputUI="''"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
-            <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
-            <Number label="Amount" v-model="value.amount" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

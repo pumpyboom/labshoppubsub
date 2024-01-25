@@ -1,9 +1,18 @@
 server:
   port: 8080
+#<<< Resilency / Circuit Breaker
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 500
+#>>> Resilency / Circuit Breaker
 
 spring:
   application:
-    name: inventory
+    name: order
 ---
 
 spring:
@@ -29,7 +38,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: inventory
+          group: order
 #<<< EDA / Topic Name
           destination: labshoppubsub
 #>>> EDA / Topic Name
@@ -45,9 +54,13 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
+api:
+  url: 
+    order: localhost:8084 
+    
 
 server:
-  port: 8082
+  port: 8084
 
 ---
 
@@ -74,11 +87,15 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: inventory
+          group: order
           destination: labshoppubsub
           contentType: application/json
         event-out:
           destination: labshoppubsub
           contentType: application/json
 
+api:
+  url: 
+    order: order:8080 
+    
 
